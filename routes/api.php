@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//HERE I CAN USE THE RESOURCE ROUTE, BUT I PREFER IT =D.
+
+Route::prefix('note')->group(function () {
+    Route::post('/create', 'NoteController@create');
+    Route::delete('/delete', 'NoteController@delete');
+    Route::get('/show', 'NoteController@show');
+    Route::patch('/edit', 'NoteController@edit');
 });
+
