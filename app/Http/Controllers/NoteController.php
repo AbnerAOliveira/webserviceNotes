@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Note;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,12 @@ class NoteController extends Controller
 {
     public function show()
     {
-        return Note::all();
+        $notes = Note::all();
+//        $notes->transform(function ($item){
+//           return Category::all()->where('category_id', $item);
+//        });
+        return $notes;
+
     }
 
     public function create(Request $request)
